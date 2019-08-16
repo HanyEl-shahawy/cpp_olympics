@@ -11,13 +11,14 @@ using namespace std;
 
 int fac_rec(int n)
 {
+    ///@brief return n!
     if(n == 1 || n == 0)
         return 1;
     else
         return n*fac_rec(n-1);
 }
 
-int fac_db_tabulation(int n)
+int fac_dp_tabulation(int n)
 {
     ///@brief create lookup table to avoid re-calculating
     /// with length of n and initalized to -1
@@ -34,7 +35,7 @@ int fac_db_tabulation(int n)
     return lk[n];
 }
 
-int fac_db_memoization(int n)
+int fac_dp_memoization(int n)
 {
     ///@brief create lookup table to avoid re-calculating
     /// with length of n and initalized to -1
@@ -44,7 +45,7 @@ int fac_db_memoization(int n)
     if(n == 0)
         return  1;
     else
-        lk[n] = n * fac_db_memoization(n-1);
+        lk[n] = n * fac_dp_memoization(n-1);
 }
 
 #endif //DYNAMIC_PROGRAMMING_FACTORIAL_H
