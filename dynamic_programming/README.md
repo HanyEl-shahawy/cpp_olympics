@@ -23,3 +23,16 @@ Given weights and values of n items. Put these items in a knapsack of capacity W
 Need to try different combinations to get maximum; optimization problem.
 
 ![alt text](https://www.geeksforgeeks.org/wp-content/uploads/knapsack-problem-660x285.png)
+
+### Partition problem
+Partition problem is to determine whether a given set can be partitioned into two subsets such that the sum of elements in both subsets is same.
+
+arr[] = {1, 5, 11, 5}
+Output: true 
+The array can be partitioned as {1, 5, 5} and {11}
+
+arr[] = {1, 5, 3}
+Output: false 
+The array cannot be partitioned into equal sum sets
+[partition problem](https://www.geeksforgeeks.org/partition-problem-dp-18/)
+
