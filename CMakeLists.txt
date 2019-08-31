@@ -16,7 +16,7 @@ include_directories(smart_pointers smart_pointers)
 ################################
 # Unit Tests
 ################################
-# Add test cpp file
+# Add test cpp files
 file(GLOB SRC_FILES test/*.cpp)
 add_executable(runUnitTests ${SRC_FILES})
 # Link test executable against gtest & gtest_main

@@ -6,3 +6,5 @@ set_target_properties(smart_pointers_lib PROPERTIES LINKER_LANGUAGE CXX)
 
 add_executable(smart_pointers main.cpp)
 
+target_link_libraries(smart_pointers smart_pointers_lib)
+
