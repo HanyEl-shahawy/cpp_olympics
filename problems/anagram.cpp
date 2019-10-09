@@ -10,7 +10,7 @@ using namespace std;
 
 int makeAnagram_multiset(vector<char>& a, vector<char>& b) {
   ///@brief store chars of a in multiset then compare with what in b
-  /// 
+  ///@bug fails for some test input values like on hakerrank
   unordered_multiset<char> multiset_a;
   unordered_multiset<char> multiset_b;
   for (auto& i : a)
