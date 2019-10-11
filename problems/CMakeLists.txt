@@ -6,7 +6,8 @@ add_library(problems_lib ${HDRS_FILES})
 
 set_target_properties(problems_lib PROPERTIES LINKER_LANGUAGE CXX)
 
-add_executable(problems anagram.cpp)
+add_executable(anagram anagram.cpp)
+add_executable(frequ_query frequency_query.cpp)
 
-target_link_libraries(problems problems_lib)
+target_link_libraries(anagram problems_lib)
 
