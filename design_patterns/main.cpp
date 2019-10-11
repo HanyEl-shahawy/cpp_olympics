@@ -4,9 +4,15 @@
 
 #include "visitor.h"
 #include "builder.h"
+#include "strategy.h"
 
 int main()
 {
+  duck d;
+  asian_duck_quack as_duck;
+  d.set_quack_type(&as_duck);
+  d.do_quack();
+
   ver1::burger b = ver1::burger::builder{}.add_cheese(true).add_tomato(true).build();
 
 
