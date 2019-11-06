@@ -5,6 +5,9 @@
 #include "visitor.h"
 #include "builder.h"
 #include "strategy.h"
+#include <vector>
+#include <unordered_map>
+#include <map>
 
 int main()
 {
