@@ -18,7 +18,6 @@ int main()
 
   ver1::burger b = ver1::burger::builder{}.add_cheese(true).add_tomato(true).build();
 
-
   auto l{new visitor_pattern::Lion()};
     auto m{new visitor_pattern::Monkey()};
 

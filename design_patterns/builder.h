@@ -36,5 +36,9 @@ private:
 };
 }
 
+///@example
+/// ver1::burger b = ver1::burger::builder{}.add_cheese(true).add_tomato(true).build();
+
+
 
 #endif // CPP_OLYMPICS_BUILDER_H

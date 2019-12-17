@@ -23,7 +23,7 @@ struct Person // you need to know the underlying type
     else if (dynamic_cast<Cat*>(_animal))
       TryToPet(_animal);
     // can get more nasty if u need to know certain breed
-    // or combination of different animals
+    // or combinations of different animals
   }
 };
 // lots of ifs, slow
@@ -49,11 +49,12 @@ if (typeid(*_animal) == typeid(Cat))
 // so don’t feel too bad.
 // (Timings: http://coliru.stacked-crooked.com/a/146255f5da7329a6)
 
+/*
 pros:
 The standard alternatives to RTTI require modification
 or redesign of the class hierarchy in question.
-    Sometimes such modifications are infeasible or undesirable,
-    particularly in widely-used or mature code.
+Sometimes such modifications are infeasible or undesirable,
+particularly in widely-used or mature code.
 RTTI can be useful in some unit tests.
 For example, it is useful in tests of factory classes
 where the test has to verify that a newly created object
@@ -70,7 +71,7 @@ Undisciplined use of RTTI makes code hard to maintain.
 It can lead to type-based decision trees or switch statements
 scattered throughout the code, all of which must be examined
 when making further changes.
-
+*/
 ----------------------
 // using single dispatch visitor pattern; dispatch is virtual call
 ///@brief new type which defines how person react to animal*
@@ -91,6 +92,9 @@ struct Cat : public Animal
   std::string Noise() const override{
     return "meow";
   }
+  Accept(ReactionVisitor& _visitor) override final {
+    _visitor.person_.TryToPet(this);
+  }
 };
 struct Dog : public Animal
 {
@@ -106,7 +110,7 @@ void Person::ReactTo(Animal* _animal){
   _animal->Accept(visitor);
 }
 // big issue:
-// how a person reacts to a dog is defined in animals
+// how a person reacts to a dog/cat/... is defined in animals themselves!
 
 
 // ref:

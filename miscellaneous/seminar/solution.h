@@ -13,26 +13,17 @@ struct AnimalVisitor
 struct ReactionVisitor : public AnimalVisitor
 {
   explicit ReactionVisitor(Person* _person) : person_(_person){}
-  void Visit(Dog* _dog) override{
-      person_.RunAwayFrom(this); // if private in person, make ReactionVisitor friend
-  }
-  void Visit(Cat* _cat) override{
-    person_.TryToPet(this);
-  }
+  void Visit(Dog* _dog) override{person_.RunAwayFrom(this);}
+  void Visit(Cat* _cat) override{person_.TryToPet(this);}
   Person* person_ = nullptr;
 };
 struct FeedingVisitor : public AnimalVisitor
 {
   explicit FeedingVisitor(Person* _person) : person_(_person){}
-  void Visit(Dog* _dog) override{
-    person_.GiveDogFood(this); // if private in person, make ReactionVisitor friend
-  }
-  void Visit(Cat* _cat) override{
-    person_.GiveCatFood(this);
-  }
+  void Visit(Dog* _dog) override {person_.GiveDogFood(this);}
+  void Visit(Cat* _cat) override {person_.GiveCatFood(this);}
   Person* person_ = nullptr;
 };
-
 struct Animal
 {
   virtual std::string Noise() const = 0;
@@ -41,19 +32,13 @@ struct Animal
 };
 struct Cat : public Animal
 {
-  Accept(AnimalVisitor* _visitor){_visitor->Accept(this);}
-  std::string Noise() const override{
-    return "meow";
-  }
+  Accept(AnimalVisitor* _visitor){_visitor->Visit(this);}
+  std::string Noise() const override{ return "meow";}
 };
 struct Dog : public Animal
 {
-  Accept(AnimalVisitor* _visitor){
-    _visitor->Accept(this);
-  }
-  std::string Noise() const override{
-    return "woof";
-  }
+  Accept(AnimalVisitor* _visitor){_visitor->Visit(this);}
+  std::string Noise() const override{ return "woof";}
 };
 void Person::ReactTo(Animal* _animal){
   ReactionVisitor visitor{this};
