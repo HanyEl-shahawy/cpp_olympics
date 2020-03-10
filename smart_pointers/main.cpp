@@ -3,6 +3,7 @@
 //
 //#include <iostream>
 //#include "shared_pointer.h"
+#include <memory>
 
 using namespace std;
 
@@ -62,6 +63,13 @@ public:
     // get raw pointer
     T* get(){ return pointer;}
 };
+
+///@brief make_unique for c++11
+template <typename T, typename... Args>
+std::unique_ptr<T> make_unique(Args&&... args)
+{
+    return unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
 
 
 
